@@ -1,0 +1,2 @@
+de.denniskniep.keycloak.hsm.signatureprovider.alg.RS256SignatureProviderFactory
+de.denniskniep.keycloak.hsm.signatureprovider.alg.RS384SignatureProviderFactory

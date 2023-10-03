@@ -6,7 +6,7 @@
 
     <groupId>de.denniskniep</groupId>
     <artifactId>keycloak-hsm</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>Keycloak HSM</name>
     <description>Keycloak Extension for HSM (Hardware Security Module) support. </description>

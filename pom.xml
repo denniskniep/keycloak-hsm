@@ -6,7 +6,7 @@
 
     <groupId>de.denniskniep</groupId>
     <artifactId>keycloak-hsm</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <name>Keycloak HSM</name>
     <description>Keycloak Extension for HSM (Hardware Security Module) support. </description>
@@ -38,6 +38,10 @@
             <email>kniepdennis@gmail.com</email>
         </developer>
     </developers>
+
+    <build>
+        <finalName>keycloak-hsm</finalName>
+    </build>
 
     <profiles>
         <profile>
@@ -127,11 +131,5 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.14</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 </project>

@@ -23,3 +23,18 @@ Create an Extension based on "Keycloak HSM" by implementing the following compon
 * HsmKeyProviderFactory
 * HsmKeyProvider
 * HsmKeyWrapper
+
+Add the following [dependency](https://central.sonatype.com/artifact/de.denniskniep/keycloak-hsm):
+```
+<dependency>
+    <groupId>de.denniskniep</groupId>
+    <artifactId>keycloak-hsm</artifactId>
+    <version>x.x.x</version>
+    <scope>provided</scope>
+</dependency>
+```
+
+Copy both extension jars into the `/opt/keycloak/providers/` folder.
+
+See [Keycloak HSM Crypki](https://github.com/denniskniep/keycloak-hsm-crypki) as an example
+

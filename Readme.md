@@ -5,18 +5,44 @@ This Keycloak Extension provides the foundational building blocks to implement s
 The HSM allows for example to execute signing and encryption operation without revealing the secret key itself.
 
 ## Overview
+
+### Keylocation
+Keylocation with builtin Keyproviders
 ```
-+-----------------+
-|                 |                          +-------------+
-|   Keycloak      |       SIGN/ENCRYPT       |     HSM     |
-|                 +------------------------->|   +-----+   |
-|                 |                          |   | KEY |   |
-|                 |<-------------------------+   +-----+   |
-|                 |                          |             |
-|                 |                          +-------------+
-|                 |
-+-----------------+
++---------------------------+
+|        Keycloak           |
+|                           |
+|                   +-----+ |
+|                   | KEY | |
+|                   +-----+ |
+|                           |
+|                           |
+|                           |
++---------------------------+
 ```
+
+Keylocation with Keycloak HSM Extension
+```
++---------------------------+
+|        Keycloak           |                          +-------------+
+|                           |      SIGN/ENCRYPT        |     HSM     |
+|                           +------------------------->|   +-----+   |
+|                           |                          |   | KEY |   |
+|                           |<-------------------------+   +-----+   |
+|                           |                          |             |
+|                           |                          +-------------+
+|                           |
++---------------------------+
+```
+
+### Framework Concept
+This project provides abstract classes for implementing a concrete HsmKeyProvider with signing and verification functionality.
+Implementations of `HsmKeyProvider` creates `HsmKeyWrapper`. 
+The implementation of the `HsmKeyWrapper` can contain additional information about the key location (Url of HSM WebService, mTLS configs, etc.) and the functionality how the signing and verification is done for that particular key.
+
+This extension overwrites every algorithm that should be possible to be handled by an HSM (see package [de.denniskniep.keycloak.hsm.signatureprovider.alg](./src/main/java/de/denniskniep/keycloak/hsm/signatureprovider/alg))
+These algorithm factories creates a `SignatureProviderPicker`, which picks the correct `SignatureSignerContext`/`SignatureVerifierContext` based on if it is a `KeyWrapper` or a `HsmKeyWrapper`.
+
 
 ## Create an Extension
 Create an Extension based on "Keycloak HSM" by implementing the following components:
